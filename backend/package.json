@@ -9,18 +9,29 @@
     "seed": "node src/services/seedService.js",
     "test": "jest --detectOpenHandles --forceExit"
   },
-  "keywords": ["shadowban", "compliance", "seo", "algorithm", "content-creator"],
+  "keywords": [
+    "shadowban",
+    "compliance",
+    "seo",
+    "algorithm",
+    "content-creator"
+  ],
   "author": "ScriptSentinel Team",
   "license": "MIT",
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "axios": "^1.7.9",
+    "bcryptjs": "^3.0.3",
     "cheerio": "^1.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.3",
     "mongoose": "^8.9.5",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "multer": "^2.4.0",
+    "youtube-transcript": "^1.3.1"
   },
   "devDependencies": {
     "jest": "^29.7.0",

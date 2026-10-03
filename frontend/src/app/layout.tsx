@@ -2,24 +2,27 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import AuroraVeilCanvas from '@/components/AuroraVeilCanvas';
+import AuthModal from '@/components/AuthModal';
+import { AuthProvider } from '@/lib/AuthContext';
 
 export const metadata: Metadata = {
-  title: 'ScriptSentinel - Algorithmic Compliance & Shadowban Scanner 2026',
+  title: 'ScriptSentinel - AI Algorithmic Compliance & Shadowban Scanner',
   description:
-    'Scan video scripts, ad copy, and landing pages against platform-specific shadowban triggers on TikTok, YouTube, Meta, and Google Ads. Instant algo-safe suggestions.',
+    'Real-time AI script scanning, video transcription, and compliance intelligence across TikTok, YouTube, Meta, and Google Ads. Prevent shadowbans with 1-click safe rewrites.',
   keywords: [
     'shadowban scanner',
     'tiktok banned words',
+    'video transcription shadowban',
     'youtube demonetization checker',
     'facebook ad compliance',
     'algo-safe script rewrite',
-    'marketing compliance scanner',
+    'marketing compliance AI',
   ],
-  authors: [{ name: 'ScriptSentinel' }],
   openGraph: {
-    title: 'ScriptSentinel - Algorithmic Compliance & Shadowban Scanner',
+    title: 'ScriptSentinel - AI Algorithmic Compliance & Shadowban Scanner',
     description:
-      'Prevent shadowbans, reach suppression, and ad rejections with real-time algorithm compliance intelligence.',
+      'Prevent shadowbans, reach suppression, and ad rejections with real-time AI compliance intelligence.',
     type: 'website',
   },
 };
@@ -41,7 +44,7 @@ export default function RootLayout({
       priceCurrency: 'USD',
     },
     description:
-      'Algorithmic compliance, shadowban prevention, and ad policy scanning tool for content creators and marketers.',
+      'AI Algorithmic compliance, video transcription, and ad policy scanning tool for content creators and marketers.',
   };
 
   return (
@@ -52,10 +55,14 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-[#090d16] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-emerald-500 selection:text-slate-950">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+      <body className="bg-[#04060d] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-emerald-500 selection:text-slate-950 relative overflow-x-hidden font-sans">
+        <AuthProvider>
+          <AuroraVeilCanvas />
+          <Navbar />
+          <main className="flex-1 relative z-10">{children}</main>
+          <Footer />
+          <AuthModal />
+        </AuthProvider>
       </body>
     </html>
   );

@@ -7,6 +7,8 @@ const morgan = require('morgan');
 const scanRoutes = require('./routes/scanRoutes');
 const policyRoutes = require('./routes/policyRoutes');
 const pseoRoutes = require('./routes/pseoRoutes');
+const { router: authRoutes } = require('./routes/authRoutes');
+const transcribeRoutes = require('./routes/transcribeRoutes');
 
 const app = express();
 
@@ -21,8 +23,8 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
 }));
 
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
 if (process.env.NODE_ENV !== 'test') {
   app.use(morgan('dev'));
@@ -32,14 +34,16 @@ if (process.env.NODE_ENV !== 'test') {
 app.get(['/', '/health', '/api/health'], (req, res) => {
   res.json({
     status: 'ok',
-    service: 'ScriptSentinel Algorithmic Compliance Engine',
+    service: 'ScriptSentinel AI Compliance & Transcription Engine',
     timestamp: new Date().toISOString(),
     uptime: process.uptime(),
   });
 });
 
 // API Routes
+app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/scan', scanRoutes);
+app.use('/api/v1/transcribe', transcribeRoutes);
 app.use('/api/v1/policies', policyRoutes);
 app.use('/api/v1/pseo', pseoRoutes);
 
