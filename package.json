@@ -1,0 +1,16 @@
+{
+  "name": "scriptsentinel-workspace",
+  "version": "1.0.0",
+  "description": "ScriptSentinel - Algorithmic Compliance & Shadowban Scanner Monorepo",
+  "scripts": {
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build:backend": "cd backend && npm install",
+    "build:frontend": "cd frontend && npm run build",
+    "test:backend": "cd backend && npm test",
+    "seed:backend": "cd backend && npm run seed"
+  },
+  "keywords": ["shadowban", "compliance", "seo", "algorithm", "content-creator", "tiktok", "youtube", "meta-ads"],
+  "author": "ScriptSentinel Team",
+  "license": "MIT"
+}
